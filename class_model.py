@@ -81,10 +81,15 @@ of.write('Total Size: %10.0f%10.0f%10.0f\n'%(X.shape[0],X.shape[1],Y.shape[0]))
 of.write('Train Size: %10.0f%10.0f%10.0f\n'%(X_train.shape[0],X_train.shape[1],Y_train.shape[0]))
 of.write(' Test Size: %10.0f%10.0f%10.0f\n'%(X_test.shape[0],X_test.shape[1],Y_test.shape[0]))
 
-pvec = []
+fnam = 'satellite_image.csv'
+dfs = pd.read_csv(iDir + fnam,sep=',')
+X_feat = dfs[variables].values
+
+pvec,fvec = [],[]
 for v in mvec:
     v.fit(X_train, Y_train)
     pvec.append(v.predict(X_test))
+    fvec.append(v.predict(X_feat))
 
 
 p_crf,p_cet,p_cba = pvec
@@ -103,12 +108,13 @@ for i,v in enumerate(pvec):
     of.write('\nKappa Score:%12.3f\n'%(cohen_kappa_score(Y_test,v))) 
 
     cfm.append(confusion_matrix(Y_test, v))
+
 of.close()
 
 for i,c in enumerate(cfm):
     ploconfmat(c,lbl,TIT[mNam[i]],mNam[i])
 
 key = ['Index']
-for i,v in enumerate(pvec):
+for i,v in enumerate(fvec):
     df = pd.DataFrame(dict(zip(key,[v]))).astype('int32')
     df.to_csv('index-'+mNam[i]+'.csv',sep=',')
