@@ -19,6 +19,7 @@ from sklearn.datasets import make_classification
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix, cohen_kappa_score
 
+########## Plotting Confusion Matrix
 def ploconfmat(clf_cfm,lbl,TIT,SUF):
     fig,ax = plt.subplots(1,figsize=(11,9))
     gc = ["{0:0.0f}".format(x) for x in clf_cfm.flatten()]
@@ -41,6 +42,7 @@ def ploconfmat(clf_cfm,lbl,TIT,SUF):
 
     fig.savefig('conf_mat-'+SUF+'.png',dpi=300,bbox_inches='tight')
 
+########### Random Seed for Split Data
 SEED = 30082024
 
 iDir = 'input/'
