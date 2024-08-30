@@ -21,7 +21,7 @@ The dataset includes the following columns:
 
 1. **Model Selection and Validation**:
    - Choose a classification algorithm to build your model.
-   - You may test multiple algorithms (optional).
+   - Test multiple algorithms.
    - Determine which variables to use for splitting the data into training and validation samples.
    - Justify your chosen validation approach.
 
@@ -29,4 +29,5 @@ The dataset includes the following columns:
    - Display the classification results using a confusion matrix and provide relevant accuracy/error metrics.
 
 3. **Visualization**:
-   - Plot the image
+   - Plot the original satellite image
+   - Plot predicted satellite image coloured according to specified labels
