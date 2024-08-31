@@ -40,7 +40,7 @@ def ploconfmat(clf_cfm,lbl,TIT,SUF):
     ax.xaxis.set_ticklabels(lbl)
     ax.yaxis.set_ticklabels(lbl)
 
-    fig.savefig('conf_mat-'+SUF+'.png',dpi=300,bbox_inches='tight')
+    fig.savefig('plots/conf_mat-'+SUF+'.png',dpi=300,bbox_inches='tight')
 
 ########### Random Seed for Split Data
 SEED = 30082024
